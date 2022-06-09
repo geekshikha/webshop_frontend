@@ -9,15 +9,16 @@ import "./styles.css";
 
 const DetailsPage = () => {
   const [details, setDetails] = useState(null);
-  const [stars, setStars] = useState([]);
+  // const [stars, setStars] = useState([]);
 
-  const paramsId = useParams();
+  const params = useParams();
+  console.log("productId:", params);
 
   useEffect(() => {
     const fetchById = async () => {
       try {
         const response = await axios.get(
-          ` http://localhost:4000/products/${paramsId.id} `
+          ` http://localhost:4000/products/${params.id} `
         );
         console.log("Am I getting details?", response);
         setDetails(response.data);
