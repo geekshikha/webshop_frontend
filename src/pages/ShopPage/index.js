@@ -2,10 +2,9 @@ import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import ProductCard from "../../components/ProductCard";
 
-function ShopPage() {
+function ShopPage({ handleClick }) {
   const [products, setProducts] = useState(null);
 
-  // const [category, setCategory] = useState([]);
   const [filterItem, setFilterItem] = useState();
 
   useEffect(() => {
@@ -28,19 +27,9 @@ function ShopPage() {
   // Avoid duplicate function calls with useMemo
   const filteredList = useMemo(getFilteredList, [filterItem, products]);
 
-  // const filteredProducts =
-  //   filterItem === "item"
-  //     ? products
-  //     : products.filter(
-  //         (product) => product.categoryId === parseInt(filterItem)
-  //       );
-
-  // const sortedProducts = filteredProducts.sort((A, B) =>
-  //   A.categorytitle.localeCompare(B.category.title)
-  // );
-
   return (
     <div>
+      <h2>Start shopping</h2>
       <select onChange={(e) => setFilterItem(e.target.value)}>
         <option value="">All</option>
         <option value="Electronics">Electronics</option>
@@ -61,6 +50,7 @@ function ShopPage() {
               price={price}
               rating={rating}
               description={description}
+              handleClick={handleClick}
             />
           );
         })
