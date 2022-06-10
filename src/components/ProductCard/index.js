@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { BsCart } from "react-icons/bs";
 import "./styles.css";
 
 import { TbCurrencyEuro } from "react-icons/tb";
-import { AiFillStar } from "react-icons/ai";
-// import { ImStarEmpty } from "react-icons/im";
-
 const ProductCard = ({
   image,
   productName,
@@ -13,6 +11,7 @@ const ProductCard = ({
   rating,
   description,
   id,
+  handleClick,
 }) => {
   // console.log("props:", props);
 
@@ -21,7 +20,6 @@ const ProductCard = ({
 
   return (
     <div className="box">
-      {/* <h2>ProductCard</h2> */}
       <Link to={`/details/${id}`}>
         <div className="ProductCard-Container">
           <div className="ProductCard-Left">
@@ -38,13 +36,6 @@ const ProductCard = ({
                   {price}
                 </li>
                 <li className="ProductCard-rating">
-                  {/*
-                  {<AiFillStar className="ProductCard-rating-icons" />}
-                  {<AiFillStar className="ProductCard-rating-icons" />}
-                  {<AiFillStar className="ProductCard-rating-icons" />}
-                  {<AiFillStar className="ProductCard-rating-icons" />}
-                  {<AiFillStar className="ProductCard-rating-empty" />}
-                  {rating} */}
                   {rating} {star.repeat(Math.round(rating))}
                 </li>
               </div>
@@ -52,7 +43,18 @@ const ProductCard = ({
 
               <li>
                 {" "}
-                {/* <div className="ProductCard-icons ">{icons}</div> */}
+                <BsCart
+                  onClick={() =>
+                    handleClick(
+                      image,
+                      productName,
+                      price,
+                      rating,
+                      description,
+                      id
+                    )
+                  }
+                />
               </li>
             </ul>
           </div>

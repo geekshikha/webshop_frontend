@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsCart } from "react-icons/bs";
 import { TbCurrencyEuro } from "react-icons/tb";
-// import { AiFillStar } from "react-icons/ai";
+
 import "./styles.css";
 
-const DetailsPage = () => {
+const DetailsPage = ({ handleClick }) => {
+  // console.log("propscart:", props);
+
   const [details, setDetails] = useState(null);
-  // const [stars, setStars] = useState([]);
 
   const params = useParams();
   console.log("productId:", params);
@@ -51,9 +52,11 @@ const DetailsPage = () => {
             </div>
           </div>
         )}
-        <button className="addto">
-          <BsCart /> Add to cart
-        </button>
+        <Link to={"/cart"}>
+          <button className="addto" onClick={() => handleClick(details)}>
+            <BsCart /> Add to cart
+          </button>
+        </Link>
         <button className="fav">
           <AiOutlineHeart /> Favourite
         </button>
@@ -64,7 +67,6 @@ const DetailsPage = () => {
           <h5>AdditionalInfo</h5>
           <h5>Reviews</h5>
         </div>
-
         <h4>Various tempor.</h4>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi

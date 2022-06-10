@@ -7,12 +7,12 @@ import { BsCart } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import { SearchBar } from "../SearchBar";
 
-const NavBar = () => {
+const NavBar = ({ setShow, size }) => {
   return (
     <div className="NavBar Container ">
       <div className="NavBar-Left ">
         <h1>
-          The <strong>Shop</strong>
+          The <strong style={{ color: "#FFFFFF" }}>Shop</strong>
         </h1>
         <div>
           <NavLink
@@ -72,6 +72,7 @@ const NavBar = () => {
         <ul>
           <li>
             <AiOutlineUser />
+
             <BsCart />
             <AiOutlineHeart />
           </li>
