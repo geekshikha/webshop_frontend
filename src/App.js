@@ -9,6 +9,7 @@ import ContactPage from "./pages/ContactPage";
 import CartPage from "./pages/CartPage";
 import "./components/NavBar/styles.css";
 import Footer from "./components/Footer/Footer";
+import RegisterPage from "./pages/UserPage/RegisterPage";
 import { useState } from "react";
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
             />
           }
         />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
       <Footer />
     </div>
