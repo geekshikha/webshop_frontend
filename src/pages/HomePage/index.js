@@ -1,5 +1,14 @@
+import { useState } from "react";
+
+import ShopPage from "../ShopPage";
+import Login from "../UserPage/LoginPage";
+
 const HomePage = () => {
-  return <p> This is the home page </p>;
+  const [isLoggedIn, setLoggedIn] = useState(false);
+
+  return (
+    <>{!isLoggedIn ? <Login handleLogin={setLoggedIn} /> : <ShopPage />}</>
+  );
 };
 
 export default HomePage;
